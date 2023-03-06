@@ -1,4 +1,4 @@
 # CTF
 Pwnable WriteUps
 
-Author: w1n_gl0ry
+Author: 0xpwn13_5bl3
