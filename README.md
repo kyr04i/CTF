@@ -1,2 +1,2 @@
 # CTF
-Pwnable | Reverse Engineering Write Ups
+Pwnable Write Ups
