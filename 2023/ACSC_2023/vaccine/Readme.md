@@ -117,7 +117,7 @@ Thành công lấy leak được địa chỉ và tính được `libc_base`, vi
 [+] Payload 3:
 Sau khi có địa chỉ hàm `fopen()` ta sẽ tính được địa chỉ `libc_base` , ta tính địa chỉ hàm `system` và chuỗi `/bin/sh` để chiếm được shell.
 
-Tới đây ta dùng one_gadgets để mọi việc dễ dàng hơn (thật ra là mình đã thử cách khác nhưng không thành :>)
+Tới đây ta dùng one_gadgets để mọi việc dễ dàng hơn (thật ra là mình đã thử cách khác nhưng không thành, có vẻ như chương trình đã cố tình chặn hàm `system()` :>)
 
 
 # 4. Chiếm cờ:
