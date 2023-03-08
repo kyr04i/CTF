@@ -3,7 +3,7 @@
 # Goal
 > The password for the next level is stored in a file called - located in the home directory
 
-# WriteUp:
+# Solve
 ```
 bandit1@bandit:~$ cat ./-
 
