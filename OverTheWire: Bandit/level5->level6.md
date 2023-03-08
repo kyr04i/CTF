@@ -8,9 +8,10 @@ human-readable
 not executable
 # WriteUp:
 
-`
+```
 bandit5@bandit:~/inhere$ find . -type f -size 1033c ! -executable -exec file {} + | grep ASCII
 ./maybehere07/.file2: ASCII text, with very long lines (1000)
+
 bandit5@bandit:~/inhere$ cat ./maybehere07/.file2
 P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
-`
+```
