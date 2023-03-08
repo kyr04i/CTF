@@ -18,7 +18,7 @@ Bên lề: Đây là Writeup đầu tay trong năm 2023 của mình, nên là c�
 ```
 vaccine: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a158b3c9f204dc1fdf47fefdac488b0da10fc5b0, for GNU/Linux 3.2.0, not stripped
 ```
-Nah, đây à 1 file executable `64 bit` không bị [stripped](https://stackoverflow.com/questions/4698299/set-breakpoint-in-an-stripped-elf-executable)(stripped là gì thì bấm vào để tham khảo thêm nhé), nên ta có thể dễ dàng tìm kiếm các functions trong `IDA` cũng như `gdb`
+Nah, đây à 1 file executable `64 bit` không bị [stripped](https://stackoverflow.com/questions/4698299/set-breakpoint-in-an-stripped-elf-executable) (stripped là gì thì bấm vào để tham khảo thêm nhé), nên ta có thể dễ dàng tìm kiếm các functions trong `IDA` cũng như `gdb`
 
 Như thường lệ của một người chơi Pwn, tải file về và thả vào `IDA` thôi nào !
 
