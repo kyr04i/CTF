@@ -5,4 +5,4 @@
 Host: bandit.labs.overthewire.org
 Port: 2220
 ```
-`Link: [https://overthewire.org/wargames/bandit/](https://overthewire.org/wargames/bandit/)`
+Link: https://overthewire.org/wargames/bandit/
