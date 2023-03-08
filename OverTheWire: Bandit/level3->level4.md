@@ -3,7 +3,7 @@
 # Goal
 > The password for the next level is stored in a hidden file in the inhere directory.
 
-# WriteUp:
+# Solve
 
 ```
 bandit3@bandit:~/inhere$ cat .hidden
