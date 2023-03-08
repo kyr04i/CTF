@@ -20,7 +20,4 @@ bandit4@bandit:~/inhere$ file -- *
 
 bandit4@bandit:~/inhere$ cat ./-file07
 lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
-bandit4@bandit:~/inhere$ 
-
-
 `
