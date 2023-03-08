@@ -11,4 +11,4 @@
 
 Packages : https://exploit.education/downloads/
 
-Website: https://exploit.education/
+Website : https://exploit.education/
