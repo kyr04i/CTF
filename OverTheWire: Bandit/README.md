@@ -3,3 +3,5 @@
 > SSH Information
 Host: bandit.labs.overthewire.org
 Port: 2220
+
+`Link: https://overthewire.org/wargames/bandit/`
