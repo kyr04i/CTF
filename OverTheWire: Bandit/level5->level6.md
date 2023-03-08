@@ -6,7 +6,7 @@
 human-readable
 1033 bytes in size
 not executable
-# WriteUp:
+# Solve
 
 ```
 bandit5@bandit:~/inhere$ find . -type f -size 1033c ! -executable -exec file {} + | grep ASCII
