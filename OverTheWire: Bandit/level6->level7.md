@@ -6,12 +6,12 @@
 owned by user bandit7
 owned by group bandit6
 33 bytes in size
-# WriteUp:
+# Write Up:
 
-`
-bandit6@bandit:~$ ls
+```
 bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
 /var/lib/dpkg/info/bandit7.password
+
 bandit6@bandit:~$ cat /var/lib/dpkg/info/bandit7.password
 z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
-`
+```
