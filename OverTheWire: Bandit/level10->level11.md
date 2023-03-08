@@ -2,7 +2,7 @@
 # Level 10 -> 11
 # Goal
 > The password for the next level is stored in the file data.txt, which contains base64 encoded data
-# Write Up:
+# Solve
 
 ```
 bandit10@bandit:~$ ls
