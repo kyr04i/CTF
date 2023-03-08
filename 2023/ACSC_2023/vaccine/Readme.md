@@ -122,7 +122,7 @@ Tới đây ta dùng one_gadgets để mọi việc dễ dàng hơn (thật ra l
 
 # 4. Chiếm cờ:
 
-Đây là toàn bộ file exploit của mình: [asd.py](https://github.com/w1n-gl0ry/CTF/blob/fdd8a08e8b941ed321e7e27b6dbedd0bd22b0b75/2023/ACSC_2023/vaccine/asd.py)
+Đây là toàn bộ file exploit của mình: [asd.py](https://github.com/w1n-gl0ry/CTF/blob/282b01d2218753947b6b7ae75d8f3fc29d1daf3e/2023/ACSC_2023/vaccine/asd.py)
 
 Chúc mọi người 1 tuần tốt lành !!
 
