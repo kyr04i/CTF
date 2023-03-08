@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 from pwn import *
-
 elf = context.binary = ELF('./vaccine')
 libc = ELF('/lib/x86_64-linux-gnu/libc.so.6')
 #r = remote('vaccine.chal.ctf.acsc.asia', 1337)
