@@ -1,5 +1,5 @@
 # Phoenix
-**Phoenix is the spiritual successor to the Protostar challenges. It covers the following topics:**
+**Phoenix is the spiritual successor to the [Protostar](https://exploit.education/protostar/) challenges. It covers the following topics:**
 
 ```
 Network programming
