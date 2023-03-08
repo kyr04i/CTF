@@ -5,7 +5,7 @@
 
 # WriteUp:
 
-`
+```
 bandit4@bandit:~/inhere$ file -- *
 -file00: data
 -file01: data
@@ -20,4 +20,4 @@ bandit4@bandit:~/inhere$ file -- *
 
 bandit4@bandit:~/inhere$ cat ./-file07
 lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
-`
+```
