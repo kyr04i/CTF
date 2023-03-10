@@ -124,7 +124,7 @@ Tới đây ta dùng one_gadgets để mọi việc dễ dàng hơn (thật ra l
 
 Đây là toàn bộ file exploit của mình: [asd.py](https://github.com/w1n-gl0ry/CTF/blob/0da95eda4b2c9730eabe7473c6dbf1fe7e87f927/2023/ACSC_2023/vaccine/asd.py)
 ```
-#!/usr/bin/python3
+#!/usr/bin/env python3
 from pwn import *
 
 elf = context.binary = ELF('./vaccine')
