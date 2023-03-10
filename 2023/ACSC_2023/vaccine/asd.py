@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 from pwn import *
 elf = context.binary = ELF('./vaccine')
 libc = ELF('/lib/x86_64-linux-gnu/libc.so.6')
