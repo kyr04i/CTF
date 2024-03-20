@@ -1,6 +1,0 @@
-services:
-  chall:
-    build: .
-    ports:
-      - "1338:5000"
-    privileged: true
