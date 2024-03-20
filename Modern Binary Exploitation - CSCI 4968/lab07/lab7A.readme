@@ -1,3 +1,0 @@
-lab7A is a remote level much like lab6B. It is running on port 7741.
-
-nc wargame.server.example 7741 -vvv
